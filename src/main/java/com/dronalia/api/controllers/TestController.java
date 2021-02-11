@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dronalia.api.models.Drone;
+import com.dronalia.api.models.Warehouse;
 import com.dronalia.api.security.services.IDronesService;
+import com.dronalia.api.security.services.IWarehousesService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -81,4 +83,16 @@ public class TestController {
 		serviceDrones.eliminar(idDrone);
 		return "Registro Eliminado";
 	}
+	
+	@Autowired
+	private IWarehousesService serviceWarehouses;
+	
+	
+
+	@GetMapping("/warehouses")
+	public List<Warehouse> listAllWarehouses(){
+		return serviceWarehouses.buscarTodos();
+	}
+
+	
 }
