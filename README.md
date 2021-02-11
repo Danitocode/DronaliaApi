@@ -1,61 +1,105 @@
-# **Proyecto MUSIC. Ejemplo de API RESTFUL**
+# Spring Boot JWT Authentication example with Spring Security & Spring Data JPA
 
-## **_ENDPOINTS_**
-***
-Probar la API con **POSTMAN**
+## User Registration, User Login and Authorization process.
+The diagram shows flow of how we implement User Registration, User Login and Authorization process.
 
-- Recuperar lista de álbums:
-    - Método:GET
-    - URL: /api/albums
+![spring-boot-jwt-authentication-spring-security-flow](spring-boot-jwt-authentication-spring-security-flow.png)
 
-- Visualizar los datos de un álbum:
-    - Método:GET
-    - URL: /api/albums/1
+## Spring Boot Server Architecture with Spring Security
+You can have an overview of our Spring Boot Server with the diagram below:
 
-- Insertar un nuevo álbum
-    - Método:POST
-    - URL: /api/albums/1
-    - Datos (sin id): 
-~~~
-    {
-        "titulo": "Rosalia",
-        "lanzado": "2019-04-04T22:00:00.000+0000",
-        "genero": "pop",
-        "precio": 50.0
-    }
-~~~
+![spring-boot-jwt-authentication-spring-security-architecture](spring-boot-jwt-authentication-spring-security-architecture.png)
 
-- Modificar un álbum
-    - Método:PUT
-    - URL: /api/albums/1
-    - Datos:
-~~~
-    {
-        "id": 2,
-        "titulo": "Rosalia",
-        "lanzado": "2019-04-04T22:00:00.000+0000",
-        "genero": "pop",
-        "precio": 50.0
-    }
-~~~
+For more detail, please visit:
+> [Secure Spring Boot App with Spring Security & JWT Authentication](https://bezkoder.com/spring-boot-jwt-authentication/)
 
-- Borrar un álbum
-    - Método:DELETE
-    - URL: /api/albums/1
-## **_Vista de prueba_**
-***
-- Vista de prueba con las funciones **fetch** llamando a la API
+> [For MongoDB](https://bezkoder.com/spring-boot-jwt-auth-mongodb/)
 
-## Base de dades **db_music**
-    - Es troba a resources, només conté la taula albums:
+## Fullstack Authentication
 
-~~~
-    CREATE TABLE `Albums` (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
-        `titulo` varchar(200) NOT NULL,
-        `lanzado` date NOT NULL,
-        `precio` double NOT NULL,
-        `genero` varchar(150) NOT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB;
-~~~
+> [Spring Boot + Vue.js JWT Authentication](https://bezkoder.com/spring-boot-vue-js-authentication-jwt-spring-security/)
+
+> [Spring Boot + Angular 8 JWT Authentication](https://bezkoder.com/angular-spring-boot-jwt-auth/)
+
+> [Spring Boot + Angular 10 JWT Authentication](https://bezkoder.com/angular-10-spring-boot-jwt-auth/)
+
+> [Spring Boot + Angular 11 JWT Authentication](https://bezkoder.com/angular-11-spring-boot-jwt-auth/)
+
+> [Spring Boot + React JWT Authentication](https://bezkoder.com/spring-boot-react-jwt-auth/)
+
+## Fullstack CRUD App
+
+> [Vue.js + Spring Boot + MySQL/PostgreSQL example](https://bezkoder.com/spring-boot-vue-js-crud-example/)
+
+> [Angular + Spring Boot + MySQL example](https://bezkoder.com/angular-10-spring-boot-crud/)
+
+> [Angular + Spring Boot + PostgreSQL example](https://bezkoder.com/angular-10-spring-boot-postgresql/)
+
+> [React + Spring Boot + MySQL example](https://bezkoder.com/react-spring-boot-crud/)
+
+> [React + Spring Boot + PostgreSQL example](https://bezkoder.com/spring-boot-react-postgresql/)
+
+Run both Back-end & Front-end in one place:
+> [Integrate Angular with Spring Boot Rest API](https://bezkoder.com/integrate-angular-spring-boot/)
+
+> [Integrate React.js with Spring Boot Rest API](https://bezkoder.com/integrate-reactjs-spring-boot/)
+
+## Dependency
+– If you want to use PostgreSQL:
+```xml
+<dependency>
+  <groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+  <scope>runtime</scope>
+</dependency>
+```
+– or MySQL:
+```xml
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <scope>runtime</scope>
+</dependency>
+```
+## Configure Spring Datasource, JPA, App properties
+Open `src/main/resources/application.properties`
+- For PostgreSQL:
+```
+spring.datasource.url= jdbc:postgresql://localhost:5432/testdb
+spring.datasource.username= postgres
+spring.datasource.password= 123
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto= update
+
+# App Properties
+bezkoder.app.jwtSecret= bezKoderSecretKey
+bezkoder.app.jwtExpirationMs= 86400000
+```
+- For MySQL
+```
+spring.datasource.url= jdbc:mysql://localhost:3306/testdb?useSSL=false
+spring.datasource.username= root
+spring.datasource.password= 123456
+
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.hibernate.ddl-auto= update
+
+# App Properties
+bezkoder.app.jwtSecret= bezKoderSecretKey
+bezkoder.app.jwtExpirationMs= 86400000
+```
+## Run Spring Boot application
+```
+mvn spring-boot:run
+```
+
+## Run following SQL insert statements
+```
+INSERT INTO roles(name) VALUES('ROLE_USER');
+INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+```
