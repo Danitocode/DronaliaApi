@@ -17,6 +17,11 @@ public class DronesService implements IDronesService {
 	@Autowired
 	private DroneRepository repoDrones;
 	
+	/*
+	public List<Drone> buscarTodos() {
+		return repoDrones.findAll();
+	}
+	 */
 	public List<Drone> buscarTodos() {
 		return repoDrones.findAll();
 	}

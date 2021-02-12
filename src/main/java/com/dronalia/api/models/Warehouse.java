@@ -26,7 +26,7 @@ public class Warehouse {
 /*
     @OneToMany(mappedBy="warehouses")
     private Set<Drone> drones;
-
+	
 	*/
 	
 	
@@ -43,14 +43,6 @@ public class Warehouse {
 	}
 
 
-
-
-	public Warehouse(@NotBlank @Size(max = 100) String name, @NotBlank @Size(max = 100) String address,
-			Set<Role> roles) {
-		super();
-		this.name = name;
-		this.address = address;
-	}
 
 
 
