@@ -32,6 +32,7 @@ public class Drone {
 	private String colour;
 	private Integer price;
 	private String name;
+	private String img;
 
 	
 	public Integer getId() {
@@ -76,7 +77,13 @@ public class Drone {
 	@Override
 	public String toString() {
 		return "Drone [id=" + id + ", axis=" + axis + ", size=" + size + ", colour=" + colour + ", price=" + price
-				+ ", name=" + name + "]";
+				+ ", name=" + name +  ", img=" + img +"]";
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	/*
