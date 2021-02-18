@@ -1,4 +1,4 @@
-package com.bezkoder.springjwt;
+package com.dronalia.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
