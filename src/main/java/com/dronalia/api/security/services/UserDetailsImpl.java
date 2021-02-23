@@ -25,6 +25,8 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
+	
+	//UserDeails constructor of properies of users
 
 	public UserDetailsImpl(Long id, String username, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
@@ -35,6 +37,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 
+	//Get roles of users 
 	public static UserDetailsImpl build(User user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getName().name()))

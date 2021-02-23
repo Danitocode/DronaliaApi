@@ -20,6 +20,7 @@ import com.dronalia.api.models.Warehouse;
 import com.dronalia.api.security.services.IDronesService;
 import com.dronalia.api.security.services.IWarehousesService;
 
+//For methods that are required. Some needs an authentication.
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/test")

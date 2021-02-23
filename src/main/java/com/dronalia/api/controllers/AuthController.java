@@ -53,6 +53,7 @@ public class AuthController {
 	
 	
 
+	//For login a user.
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -73,6 +74,8 @@ public class AuthController {
 												 userDetails.getEmail(), 
 												 roles));
 	}
+
+	//For signup a user.
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {

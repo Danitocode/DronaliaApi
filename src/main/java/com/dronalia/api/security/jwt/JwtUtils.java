@@ -22,6 +22,7 @@ public class JwtUtils {
 	@Value("${dronalia.api.jwtExpirationMs}")
 	private int jwtExpirationMs;
 
+	//For generate a JWT.
 	public String generateJwtToken(Authentication authentication) {
 
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -38,6 +39,7 @@ public class JwtUtils {
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
 
+	//For validate the parameters of a JWT.
 	public boolean validateJwtToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);

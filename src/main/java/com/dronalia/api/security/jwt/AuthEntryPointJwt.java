@@ -17,6 +17,7 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
+	//For throw an exception if user is unauthorized.
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {

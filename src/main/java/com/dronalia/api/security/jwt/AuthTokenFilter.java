@@ -28,6 +28,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
+	//For see if a user has a right JWT.
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
